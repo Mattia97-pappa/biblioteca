@@ -1,0 +1,33 @@
+body {
+    font-family: 'Georgia', serif;
+background-image: url('https://e1.pxfuel.com/desktop-wallpaper/548/544/desktop-wallpaper-library-books.jpg');
+background-size: cover;
+color: #fff;
+position: relative;
+padding: 5%;
+margin: 0;
+}
+
+body::before{
+   content:"";
+   position: absolute;
+   top: 0;
+   left:0;
+   width:100%;
+   height: 100%;
+   background-color: rgba(0,0,0,0.5);
+z-index: 0;
+}
+
+
+h1{
+    text-align: center;
+    color: rgb(174, 255, 0);
+    position: relative;
+    z-index:1;
+}
+
+main, p, div, section, h2, footer, li,button,a,label,p,h4,tbody,td,tr,thead,table,th{
+    position: relative;
+    z-index: 1;
+}

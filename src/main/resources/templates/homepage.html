@@ -1,0 +1,65 @@
+
+<!--
+  Questo è il file HTML della homepage della Biblioteca.
+  Ho usato Bootstrap per lo stile e Thymeleaf per collegare dinamicamente contenuti con Spring.
+  Se l’utente è loggato, può vedere i bottoni per prenotare libri, accedere al profilo o fare logout.
+  Se NON è loggato, vede solo i bottoni per registrarsi o fare il login.
+  Mostro anche gli orari della biblioteca e i contatti.
+  Uso Spring Security con Thymeleaf per mostrare i contenuti in base a chi è autenticato.
+-->
+
+
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>Biblioteca Comunale</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+  <h1>Biblioteca Comune di SpringField🏢</h1>
+  
+  <div sec:authorize="isAuthenticated()">
+  <a href="/biblioteca/arrivi" class="btn btn-primary">
+    <i class="bi bi-house-door-fill"></i> Cerca e prenota libri
+  </a>
+  </div>
+
+  <div sec:authorize="!isAuthenticated()">
+    <a href="/auth/register" class="btn btn-success">
+      <i class="bi bi-house-door-fill"></i> Registrati
+    </a>
+    <a href="/auth/login" class="btn btn-light">
+      <i class="bi bi-house-door-fill"></i> Login per prenotazioni
+    </a>
+  </div>
+
+
+  <div sec:authorize="isAuthenticated()">
+    <a href="/auth/profilo" class="btn btn-info">
+      <i class="bi bi-person-circle"></i> Il mio profilo
+    </a>
+  </div>
+  
+  <div sec:authorize="isAuthenticated()">
+    <a href="/logout" class="btn btn-danger">
+      <i class="bi bi-house-door-fill"></i> Logout↩️
+    </a>
+    <p>Sei loggato via 📧Email. Email utente: <span sec:authentication="name"></span></p>
+  </div>
+
+  <h2>🕛Orari di Apertura</h2>
+  <ul>
+    <li>Da Lunedì a Venerdì: 9:00 - 18:00</li>
+    <li>Sabato: 9:00 - 13:00</li>
+    <li>Domenica: chiuso</li>
+  </ul>
+
+  <p>📞Numero di telefono: 3426435211 |📧Email: biblioteca@comune.it</p>
+
+  <footer>
+    © 2025 Biblioteca Comunale - Tutti i diritti riservati
+  </footer>
+</body>
+</html>

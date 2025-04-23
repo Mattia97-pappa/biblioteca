@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registrazione</title>
+</head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<body>
+    <a href="/auth/login" class="btn btn-primary">
+        <i class="bi bi-house-door-fill"></i> Sei già registrato? Accedi
+      </a>
+    </a>
+    <a href="/biblioteca/home" class="btn btn-primary">
+      <i class="bi bi-house-door-fill"></i> Torna all'home
+    </a>
+    <h2>Registrati</h2>
+<form th:action="@{/auth/register}" method="post" th:object="${utenti}">
+    <label>Username: <input type="text" th:field="*{username}" required/></label><br/>
+    <label>Password: <input type="password" th:field="*{password}" required/></label><br/>
+    <label>Email: <input type="email" th:field="*{email}" required/></label><br/>
+    <label>Numero di telefono: <input type="text" th:field="*{telefono}" required/></label><br/>
+    <label>Indirizzo di residenza : <input type="text" th:field="*{indirizzoresidenza}" required/></label><br/>
+    <label>Biblioteca di riferimento:
+        <select th:field="*{biblioteca_id}">
+            <option th:each="b : ${biblioteche}" th:value="${b.id}" th:text="${b.nome}"></option>
+
+        </select>
+    </label><br/>
+
+    <button type="submit">Registrati</button>
+</form>
+</body>
+</html>

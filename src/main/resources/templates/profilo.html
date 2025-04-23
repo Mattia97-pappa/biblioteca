@@ -1,0 +1,77 @@
+
+<!-- 
+  
+    Questa pagina mostra il profilo dell'utente loggato, con le sue informazioni personali e le prenotazioni effettuate. 
+    Se l'utente è loggato, potrà visualizzare:
+    - Le informazioni personali: username, email, telefono e indirizzo.
+    - La lista delle prenotazioni effettuate, con la possibilità di annullarle.
+    Se non ci sono prenotazioni, verrà mostrato un messaggio che lo segnala.
+ e l'utente potrà fare il logout.
+    -->
+
+
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Profilo Utente</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+
+    <a href="/biblioteca/home" class="btn btn-primary">
+        <i class="bi bi-house-door-fill"></i> Torna all'home
+    </a>
+    <h2>👤 Il tuo profilo</h2>
+
+    <div sec:authorize="isAuthenticated()">
+        <p><strong>Email (login):</strong> <span sec:authentication="name"></span></p>
+
+        <div class="container mt-5">
+            <h4>Informazioni personali</h4>
+            <p><strong>Username:</strong> <span th:text="${utenti.username}"></span></p>
+            <p><strong>Email:</strong> <span th:text="${utenti.email}"></span></p>
+            <p><strong>Telefono:</strong> <span th:text="${utenti.telefono}"></span></p>
+            <p><strong>Indirizzo:</strong> <span th:text="${utenti.indirizzoresidenza}"></span></p>
+        </div>
+
+        <h4>📚 Le tue prenotazioni</h4>
+        <div th:if="${prenotazioniComplete.empty}">
+            <p>Non hai ancora effettuato prenotazioni.</p>
+        </div>
+        <table class="table" th:unless="${prenotazioniComplete.empty}">
+            <thead>
+                <tr>
+                    <th>📖 Libro</th>
+                    <th>🏛️ Biblioteca per il ritiro</th>
+                    <th>🗓️ Data di prenotazione</th>
+                    <th>Azione</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="p : ${prenotazioniComplete}">
+                    <td th:text="${p.libro.nome}">Titolo</td>
+                    <td th:text="${p.biblioteca.nome}">Biblioteca</td>
+                    <td th:text="${p.data}">Data</td>
+                    <td>
+                        <form th:action="@{/auth/annulla-prenotazione}" method="post">
+                            <input type="hidden" name="prenotazioneId" th:value="${p.id}">
+                            <button type="submit" class="btn btn-danger btn-sm">Annulla</button>
+                        </form>
+                    </td>
+                    
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="/logout" class="btn btn-danger mt-3">Logout</a>
+    </div>
+
+    <div sec:authorize="!isAuthenticated()">
+        <p>Devi fare il login per vedere il tuo profilo.</p>
+        <a href="/auth/login" class="btn btn-primary">Login</a>
+    </div>
+
+</body>
+</html>
