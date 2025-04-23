@@ -18,7 +18,7 @@ repository → interfaccia con il DB
 
 security & config → login, autenticazione e accessi
 
-▶️ Come eseguire il progetto
+▶️ Per eseguire il progetto
 Clona la repository
 
 
