@@ -7,7 +7,7 @@ Web app che collega più biblioteche tra loro, permettendo agli utenti di cercar
 
 
 
-👀 Dove vedere il codice
+👀 
 Il codice sorgente completo si trova in src, suddiviso in package chiari:
 
 controller → gestione delle rotte
