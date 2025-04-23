@@ -82,11 +82,11 @@ CREATE TABLE `utenti` (
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 ```
 
-Avvia l'app
-Esegui la classe BibliotecaApplication.java (o simile, con @SpringBootApplication)
+
+Esegui la classe BibliotecaApplication.java (o simile, con @SpringBootApplication) per avviare l'app
 
 Accedi all'app dal browser
-Vai su http://localhost:8080
+vai su http://localhost:8080
 
-👤 Accessi
+👤 
 Puoi registrarti come utente per provare la funzionalità di prenotazione.
