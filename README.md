@@ -23,7 +23,12 @@ Clona la repository
 
 
 bash
-   git clone https://github.com/Mattia97-pappa/biblioteca.git
+ 
+ ```code
+ 
+ git clone https://github.com/Mattia97-pappa/biblioteca.git
+cd biblioteca
+```
 
 
 Tabelle database
