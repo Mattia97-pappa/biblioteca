@@ -1,4 +1,4 @@
-📝 Descrizione
+📝 
 Web app che collega più biblioteche tra loro, permettendo agli utenti di cercare, prenotare e ricevere libri nella biblioteca più vicina alla propria città. Gli utenti possono gestire le prenotazioni direttamente dal proprio profilo.
 
 
